@@ -37,6 +37,8 @@ namespace Octostache.Tests
         [InlineData("#{Foo Bar Jazz}", "Foo Bar Jazz=Bar", "Bar")]
         [InlineData("#{Foo|ToUpper}", "Foo=#{Bar | ToLower};Bar=Baz", "BAZ")]
         [InlineData("#{Foo | ToUpper}", "Foo=baz", "BAZ")]
+        [InlineData("#{Foo | Replace \"bar\" \"baz\"}", "Foo=bar", "baz")]
+        [InlineData("#{Foo | Replace \"\\d+\" \"baz\"}", "Foo=bar123bar", "barbazbar")]
         [InlineData("##{Foo}", "foo=Bar", "#{Foo}")]
         public void BasicExamples(string template, string variableDefinitions, string expectedResult)
         {
